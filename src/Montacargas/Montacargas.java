@@ -12,6 +12,7 @@ public class Montacargas {
 	}
 
 	public Boolean cargar(Carga carga) {
+
 		if (carga.getPeso() <= PESO_MAXIMO) {
 			return this.cargas.add(carga);
 		} else {
@@ -25,22 +26,24 @@ public class Montacargas {
 		this.cargas.clear();
 	}
 
-	public Double obtenerCargaActual() {
+	public Double obtenerPesoActual() {
 		Double sumatoria = 0.0;
 		for (Carga carga : cargas) {
 			sumatoria += carga.getPeso();
 		}
-		
-		return sumatoria;
+		if (sumatoria <= PESO_MAXIMO) {
+			return sumatoria;
+		}
+		return 0.0;
 	}
 
-	public Double obtenerCargaPromedio() {
-		Double promedio = 0.0;
+	public Double obtenerPesoPromedio() {
+		Double sumatoria = 0.0;
 		for (Carga carga : historico) {
-			promedio += carga.getPeso();
+			sumatoria += carga.getPeso();
 		}
 
-		return promedio / historico.size();
+		return sumatoria / historico.size();
 	}
 
 }

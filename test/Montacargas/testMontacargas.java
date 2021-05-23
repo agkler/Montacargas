@@ -15,7 +15,7 @@ public class testMontacargas {
 
 		Double cargaEsperada = 700.0;
 
-		assertEquals(cargaEsperada, mont1.obtenerCargaActual());
+		assertEquals(cargaEsperada, mont1.obtenerPesoActual());
 
 	}
 
@@ -32,7 +32,7 @@ public class testMontacargas {
 
 		Double cargaEsperada = 1410.0;
 
-		assertEquals(cargaEsperada, mont1.obtenerCargaActual());
+		assertEquals(cargaEsperada, mont1.obtenerPesoActual());
 
 	}
 
@@ -45,8 +45,24 @@ public class testMontacargas {
 
 		Double cargaEsperada = 0.0;
 
-		assertEquals(cargaEsperada, mont1.obtenerCargaActual());
+		assertEquals(cargaEsperada, mont1.obtenerPesoActual());
 
+	}
+
+	@Test
+	public void queNoPuedaSuperarElPesoMaximoAlCargarVariasCargas() {
+		Montacargas mont1 = new Montacargas();
+		Carga carga1 = new Carga(700.0);
+		Carga carga2 = new Carga(600.0);
+		Carga carga3 = new Carga(600.0);
+
+		mont1.cargar(carga1);
+		mont1.cargar(carga2);
+		mont1.cargar(carga3);
+
+		Double cargaEsperada = 0.0;
+
+		assertEquals(cargaEsperada, mont1.obtenerPesoActual());
 	}
 
 	@Test
@@ -59,7 +75,7 @@ public class testMontacargas {
 
 		Double cargaEsperada = 0.0;
 
-		assertEquals(cargaEsperada, mont1.obtenerCargaActual());
+		assertEquals(cargaEsperada, mont1.obtenerPesoActual());
 
 	}
 
@@ -83,7 +99,7 @@ public class testMontacargas {
 
 		Double promedioEsperado = 725.0;
 
-		assertEquals(promedioEsperado, mont1.obtenerCargaPromedio());
+		assertEquals(promedioEsperado, mont1.obtenerPesoPromedio());
 
 	}
 }
